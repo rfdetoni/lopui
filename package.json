@@ -14,7 +14,10 @@
     "test": "node --test tests/*.test.mjs",
     "build": "ng-packagr -p packages/angular/ng-package.json -c packages/angular/tsconfig.lib.json",
     "verify": "npm run test && npm run build",
-    "cli": "node packages/cli/bin/lopui.mjs"
+    "cli": "node packages/cli/bin/lopui.mjs",
+    "compat:21": "node scripts/test-consumer.mjs 21",
+    "compat:22": "node scripts/test-consumer.mjs 22",
+    "compat": "npm run compat:21 && npm run compat:22"
   },
   "devDependencies": {
     "@angular/common": "21.2.26",
