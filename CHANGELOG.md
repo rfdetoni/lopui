@@ -7,3 +7,6 @@
   CollapsibleCard, AreaSidenav, CommandPalette e EntityPicker.
 - CLI JSON para agentes, templates e testes.
 - CI apenas por PR ou execução manual.
+
+- Primitivas visuais de chat, cartões Kanban, campos de formulário e
+  badges de estado (sem mover lógica de streaming ou CRM).
