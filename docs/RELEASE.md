@@ -34,3 +34,11 @@ diretamente de caminhos de arquivos de outros repositórios.
 
 MIT permite incorporação em software proprietário, conservando o
 texto da licença e o aviso de copyright correspondente.
+
+## Primeira publicação pelo repositório
+O arquivo raiz `RELEASE` especifica a versão a publicar. Quando um PR
+aprovado altera esse arquivo e é integrado em `main`, o workflow de
+release executa os testes + consumidores Angular 21/22, valida licenças
+MIT e publica os três pacotes no GitHub Packages. Alterações comuns em
+componentes não executam release. Não modificar `RELEASE` sem atualizar
+os três `package.json` e o `package-lock.json` para a mesma versão.

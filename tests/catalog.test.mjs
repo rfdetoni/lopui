@@ -78,3 +78,11 @@ test('release publication is gated and validates MIT license',()=>{
  assert.match(yaml,/MIT License/);
  assert.doesNotMatch(yaml,/pull_request:/);
 });
+
+test('a release requires an explicit RELEASE file change on main',()=>{
+ const workflow=read('.github/workflows/release.yml');
+ assert.match(workflow,/branches: \[main\]/);
+ assert.match(workflow,/paths:\s*\n\s*- 'RELEASE'/);
+ assert.match(workflow,/npm run compat/);
+ assert.equal(read('RELEASE').trim(),JSON.parse(read('packages/angular/package.json')).version);
+});

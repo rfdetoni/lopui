@@ -8,6 +8,8 @@ on:
       - 'tsconfig.base.json'
       - 'scripts/test-consumer.mjs'
       - 'package-lock.json'
+      - 'RELEASE'
+      - '.github/workflows/release.yml'
       - '.github/workflows/verify.yml'
   workflow_dispatch:
 permissions:
