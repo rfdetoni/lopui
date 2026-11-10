@@ -9,7 +9,7 @@ test('manifest is versioned, exported and references real Angular components',()
  const response=command('manifest'),manifest=response.data;
  assert.equal(response.apiVersion,1);
  assert.equal(response.type,'manifest');
- assert.equal(manifest.license,'AGPL-3.0-only');
+ assert.equal(manifest.license,'MIT');
  assert.ok(manifest.components.length>=10);
  const exports=read('packages/angular/src/public-api.ts');
  for(const component of manifest.components){
@@ -47,7 +47,7 @@ test('Angular library uses partial compilation and Angular 21 peer compatibility
  assert.equal(pack.lib.entryFile,'src/public-api.ts');
 });
 
-test('every installable package carries the original AGPL license',()=>{
+test('every installable package carries the MIT license',()=>{
  const license=read('LICENSE');
  for(const name of ['angular','tokens','cli']){
   assert.equal(read('packages/'+name+'/LICENSE'),license);
@@ -57,4 +57,15 @@ test('filters emit only declared operator variants',()=>{
  const code=read('packages/angular/src/lib/directory-filter.component.ts');
  assert.match(code,/operatorFor\(field:string\)/);
  assert.match(code,/operator:LopFilterOperator/);
+});
+
+test('MIT permissions and notice are included in every redistributable package',()=>{
+ const license=read('LICENSE');
+ assert.match(license,/MIT License/);
+ assert.match(license,/Permission is hereby granted, free of charge/);
+ assert.match(license,/The above copyright notice and this permission notice/);
+ for(const id of ['angular','cli','tokens']){
+  assert.equal(JSON.parse(read('packages/'+id+'/package.json')).license,'MIT');
+  assert.equal(read('packages/'+id+'/LICENSE'),license);
+ }
 });

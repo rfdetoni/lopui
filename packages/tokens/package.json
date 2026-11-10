@@ -1,7 +1,7 @@
 {
   "name": "@rfdetoni/lopui-tokens",
   "version": "0.1.0",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "description": "Lop UI semantic design tokens without framework dependencies",
   "files": [
     "tokens.css",

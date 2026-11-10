@@ -17,8 +17,7 @@ autorizações e mensagens de domínio são responsabilidade da aplicação
 consumidora. `EntityPicker` recebe adaptadores async tipados, não
 lê `localStorage` ou `sessionStorage`.
 
-Licença AGPL-3.0-only. Verificar compatibilidade com a distribuição
-dos produtos consumidores antes de publicar/instalar.
+Licença MIT: uso permitido em aplicações comerciais e proprietárias, mantendo o aviso de copyright e o texto da licença.
 
 ## Primitivas de MFE
 

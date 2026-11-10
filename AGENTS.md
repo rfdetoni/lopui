@@ -11,5 +11,6 @@
 - Testar teclado, foco, aria, estado de carregamento, 360px, 200% zoom e reduced-motion.
 - Validar `npm test` e `npm run build` antes de qualquer PR/merge.
 - Atualizar o manifesto da CLI ao adicionar/remover componentes.
-- Publicação e alteração de licença são decisões explícitas do mantenedor.
+- Preservar a licença MIT e os avisos de copyright em todos os pacotes; não copiar código AGPL/GPL de terceiros.
+- Publicação versionada requer validação de build e testes antes do registro.
 - CI mínimo: PR / workflow_dispatch; sem runner pesado em todo push.

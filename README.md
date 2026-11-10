@@ -35,7 +35,7 @@ host antes do deploy.
 
 ## Consumir
 
-Depois de **publicar** os pacotes em registro npm compatível com
+Após publicar os pacotes em registro npm compatível com
 `@rfdetoni`:
 
 ```bash
@@ -62,16 +62,16 @@ Documentação e guias de migração: `docs/ARCHITECTURE.md`,
 
 ## Licença
 
-**AGPL-3.0-only**, conforme o arquivo LICENSE já existente neste
-repositório. Ela tem obrigações de copyleft inclusive em certos usos
-via rede. Antes de embutir e distribuir essa biblioteca em sistemas
-proprietários, avalie com responsável jurídico se AGPL é compatível com
-a estratégia de distribuição do ecossistema. A licença do Astryx é MIT,
-mas nenhum código original dele foi copiado.
+**MIT** — permite incorporar, modificar e distribuir LopUI em aplicações
+comerciais e proprietárias sem exigir que o código dos consumidores seja
+publicado. A obrigação principal é manter o aviso de copyright e a
+licença MIT nas cópias ou partes substanciais da biblioteca. A licença
+do Astryx também é MIT; LopUI utiliza código próprio, sem importar a
+biblioteca React.
 
 ### Distribuição e licenças
 
-Cada pacote inclui sua própria cópia da licença AGPL-3.0.
+Cada pacote inclui sua própria cópia da licença MIT.
 `npm run build` produz `dist/angular` com a biblioteca APF;
 `npm pack --dry-run` verifica o conteúdo antes de qualquer publicação.
 A biblioteca não está publicada em npm/GitHub Packages nesta etapa.

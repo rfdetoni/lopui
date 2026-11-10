@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "sideEffects": false,
   "description": "Lop UI reusable Angular standalone components (Angular 21+)",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/rfdetoni/lopui.git",
