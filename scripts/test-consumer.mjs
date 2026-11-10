@@ -26,7 +26,7 @@ try{
  writeFileSync(join(dir,'tsconfig.json'),JSON.stringify({
    compilerOptions:{target:'ES2022',module:'ES2022',moduleResolution:'bundler',
      lib:['ES2022','DOM'],strict:true,skipLibCheck:true,
-     experimentalDecorators:true,types:[],outDir:'build'},
+     experimentalDecorators:true,types:[],rootDir:'src',outDir:'build'},
    angularCompilerOptions:{strictTemplates:true,strictInjectionParameters:true},
    files:['src/consumer.component.ts']
  },null,2));
