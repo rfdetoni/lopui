@@ -8,3 +8,7 @@ export * from './lib/collapsible-card.component';
 export * from './lib/area-sidenav.component';
 export * from './lib/command-palette.component';
 export * from './lib/entity-picker.component';
+export * from './lib/chat-message.component';
+export * from './lib/kanban-card.component';
+export * from './lib/form-field.component';
+export * from './lib/status-badge.component';

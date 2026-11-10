@@ -183,6 +183,72 @@
         "empty",
         "selection"
       ]
+    },
+    {
+      "name": "ChatMessage",
+      "selector": "lopui-chat-message",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/chat-message.component.ts",
+      "inputs": [
+        "message",
+        "userLabel",
+        "assistantLabel"
+      ],
+      "states": [
+        "user",
+        "assistant",
+        "sources"
+      ]
+    },
+    {
+      "name": "KanbanCard",
+      "selector": "lopui-kanban-card",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/kanban-card.component.ts",
+      "inputs": [
+        "card",
+        "showHistory"
+      ],
+      "states": [
+        "card",
+        "chips",
+        "history"
+      ]
+    },
+    {
+      "name": "FormField",
+      "selector": "lopui-form-field",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/form-field.component.ts",
+      "inputs": [
+        "controlId",
+        "label",
+        "required",
+        "error",
+        "hint"
+      ],
+      "states": [
+        "normal",
+        "invalid",
+        "hint"
+      ]
+    },
+    {
+      "name": "StatusBadge",
+      "selector": "lopui-status-badge",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/status-badge.component.ts",
+      "inputs": [
+        "label",
+        "tone"
+      ],
+      "states": [
+        "neutral",
+        "success",
+        "warning",
+        "danger",
+        "info"
+      ]
     }
   ],
   "templates": [
