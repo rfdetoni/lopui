@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostListener, Input, OnChanges, OnInit, SimpleChanges, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, OnChanges, OnInit, SimpleChanges, inject, signal} from '@angular/core';
 
 /** Content is hidden instead of destroyed, preserving unsaved NgForm state. */
 @Component({
@@ -47,6 +47,7 @@ import {ChangeDetectionStrategy, Component, HostListener, Input, OnChanges, OnIn
 })
 export class LopCollapsibleCardComponent implements OnInit,OnChanges {
   private static nextId=0;
+  private readonly host=inject(ElementRef<HTMLElement>);
   readonly contentId='lopui-panel-'+(++LopCollapsibleCardComponent.nextId);
   readonly collapsed=signal(false);
   @Input({required:true}) title='';
@@ -64,7 +65,7 @@ export class LopCollapsibleCardComponent implements OnInit,OnChanges {
   openFromHash():void {
     // A host may supply its own id to this element for an in-page anchor.
     if(typeof location==='undefined')return;
-    const id=(document.getElementById(location.hash.slice(1)))?.id;
-    if(id && id===location.hash.slice(1))this.collapsed.set(false);
+    const hash=decodeURIComponent(location.hash.slice(1));
+    if(hash&&this.host.nativeElement.id===hash)this.collapsed.set(false);
   }
 }

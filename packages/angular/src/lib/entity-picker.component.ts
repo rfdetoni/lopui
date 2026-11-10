@@ -180,6 +180,8 @@ export class LopEntityPickerComponent<T> implements ControlValueAccessor,Validat
     try{
       const response=await this.fetchPage(this.query,this.cursors[pageIndex]??null,limit);
       if(this.destroyed||this.disabled||serial!==this.version)return;
+      if(response.hasMore&&!response.nextCursor)
+        throw new Error('A próxima página exige cursor válido');
       this.items.set(response.items);
       this.hasMore.set(response.hasMore);
       if(response.hasMore)this.cursors[pageIndex+1]=response.nextCursor;
