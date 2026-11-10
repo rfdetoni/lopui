@@ -1,0 +1,30 @@
+{
+  "name": "@rfdetoni/lopui-cli",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "description": "Machine-readable Lop UI catalog and templates for coding agents",
+  "bin": {
+    "lopui": "./bin/lopui.mjs"
+  },
+  "files": [
+    "bin",
+    "manifest.json",
+    "templates",
+    "README.md"
+  ],
+  "exports": {
+    "./manifest.json": "./manifest.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfdetoni/lopui.git",
+    "directory": "packages/cli"
+  }
+}

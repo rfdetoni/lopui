@@ -1,0 +1,24 @@
+{
+  "name": "@rfdetoni/lopui-angular",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "description": "Lop UI reusable Angular standalone components (Angular 21+)",
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfdetoni/lopui.git",
+    "directory": "packages/angular"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=21 <23",
+    "@angular/core": ">=21 <23",
+    "@angular/forms": ">=21 <23",
+    "rxjs": "^7.4.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

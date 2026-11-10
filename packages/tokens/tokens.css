@@ -1,0 +1,41 @@
+/* Lop UI semantic tokens — inspired by LopFlow Design System v2.
+ * Import in global styles. App-specific values may override --lp-*.
+ * No global font, body background or control reset is forced on consumers. */
+:root {
+  --lp-ink: #172d31;
+  --lp-body: #314a54;
+  --lp-accent: #008d80;
+  --lp-accent-dark: #006f68;
+  --lp-accent-subtle: #e5f8f1;
+  --lp-canvas: #eaf2f5;
+  --lp-surface: #fff;
+  --lp-surface-muted: #f5f8fa;
+  --lp-border: #ccdee5;
+  --lp-muted: #516c78;
+  --lp-danger: #b7354a;
+  --lp-info: #246ace;
+  --lp-warning: #946112;
+  --lp-shadow: 0 7px 25px rgba(22,69,84,.095);
+  --lp-radius: 13px;
+  --lp-control-radius: 9px;
+  --lp-control-height: 40px;
+  --lp-content-width: 1500px;
+  --lp-spacing: 14px;
+  --lp-font: -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
+  --lp-focus: 2px solid var(--lp-accent-dark);
+}
+
+/* Host opt-in. Does not override LiviaCare/LopManager branding by default. */
+[data-lop-theme="dark"] {
+  --lp-ink:#e8effc;
+  --lp-body:#dce8ff;
+  --lp-accent:#82b6ff;
+  --lp-accent-dark:#377aff;
+  --lp-accent-subtle:#1c344e;
+  --lp-canvas:#101727;
+  --lp-surface:#192437;
+  --lp-surface-muted:#151e30;
+  --lp-border:#2b3a52;
+  --lp-muted:#a1b4cb;
+  --lp-focus:2px solid #82b6ff;
+}
