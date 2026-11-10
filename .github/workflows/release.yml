@@ -1,0 +1,91 @@
+name: LopUI release
+# PRs never publish; tags and explicit manual approvals only.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. 0.1.0) matching all packages'
+        required: true
+        type: string
+      registry:
+        description: 'Registry'
+        required: true
+        type: choice
+        options: [github, npmjs]
+        default: github
+      publish:
+        description: 'Actually publish? false = preview only'
+        required: true
+        type: boolean
+        default: false
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+  packages: write
+concurrency:
+  group: lopui-release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.3'
+          cache: npm
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@rfdetoni'
+      - name: Locked install, tests, APF build
+        run: |
+          npm ci --no-audit --no-fund
+          npm run verify
+      - name: Angular 21 and 22 consumer smoke
+        run: npm run compat
+      - name: Validate version, license and tarballs
+        shell: bash
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="$REQUESTED_VERSION"
+          if [ "$GITHUB_REF_TYPE" = 'tag' ]; then VERSION="${GITHUB_REF_NAME#v}"; fi
+          node --input-type=module -e '
+          import {readFileSync} from "node:fs";
+          const expected=process.argv[1];
+          if(!/^[0-9]+\.[0-9]+\.[0-9]+$/.test(expected))
+            throw Error("Invalid release version");
+          for(const dir of ["packages/tokens","packages/cli","dist/angular"]){
+            const obj=JSON.parse(readFileSync(dir+"/package.json","utf8"));
+            if(obj.version!==expected||obj.license!=="MIT")
+              throw Error("Version/license mismatch in "+dir);
+            if(!readFileSync(dir+"/LICENSE","utf8").includes("MIT License"))
+              throw Error("Missing license in "+dir);
+          }' "$VERSION"
+          for name in dist/angular packages/tokens packages/cli; do
+            (cd "$name" && npm pack --dry-run --ignore-scripts >/dev/null)
+          done
+      - name: Publish to GitHub Packages
+        if: (github.event_name == 'push' && github.ref_type == 'tag') || (github.event_name == 'workflow_dispatch' && inputs.publish && inputs.registry == 'github')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in dist/angular packages/tokens packages/cli; do
+            (cd "$name" && npm publish --ignore-scripts --registry=https://npm.pkg.github.com)
+          done
+      - name: Publish to npmjs (NPM_TOKEN must be configured)
+        if: github.event_name == 'workflow_dispatch' && inputs.publish && inputs.registry == 'npmjs'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${NPM_TOKEN:-}" || { echo 'NPM_TOKEN secret not configured'; exit 1; }
+          npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          for name in dist/angular packages/tokens packages/cli; do
+            (cd "$name" && npm publish --access public --ignore-scripts --registry=https://registry.npmjs.org)
+          done

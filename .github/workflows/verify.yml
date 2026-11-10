@@ -6,6 +6,8 @@ on:
       - 'tests/**'
       - 'package.json'
       - 'tsconfig.base.json'
+      - 'scripts/test-consumer.mjs'
+      - 'package-lock.json'
       - '.github/workflows/verify.yml'
   workflow_dispatch:
 permissions:
@@ -30,6 +32,9 @@ jobs:
         run: npm test
       - name: Package Angular library (partial compilation)
         run: npm run build
+      - name: Verify Angular 21 and Angular 22 consumer compilations (opt-in)
+        if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.title, '[compat]')
+        run: npm run compat
       - name: Verify distributable
         run: |
           test -f dist/angular/package.json

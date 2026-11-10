@@ -14,3 +14,5 @@
 - Preservar a licença MIT e os avisos de copyright em todos os pacotes; não copiar código AGPL/GPL de terceiros.
 - Publicação versionada requer validação de build e testes antes do registro.
 - CI mínimo: PR / workflow_dispatch; sem runner pesado em todo push.
+
+- Antes de release, validar npm run compat para os consumidores Angular 21 e 22. CI comum nunca publica pacotes; registrar versões com revisão explícita.

@@ -26,3 +26,5 @@
   APF Angular 21 devem ser verificados em um build do próprio host.
 
 O host ainda deve executar auditorias com dados/sessões de teste.
+
+Antes de publicar ou migrar os hosts, usar npm run compat e confirmar instalação via registry. GitHub Packages pode exigir token de instalação e permissão explícita para repositórios consumidores.

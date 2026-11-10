@@ -69,3 +69,12 @@ test('MIT permissions and notice are included in every redistributable package',
   assert.equal(read('packages/'+id+'/LICENSE'),license);
  }
 });
+
+test('release publication is gated and validates MIT license',()=>{
+ const yaml=read('.github/workflows/release.yml');
+ assert.match(yaml,/workflow_dispatch:/);
+ assert.match(yaml,/npm run compat/);
+ assert.match(yaml,/packages: write/);
+ assert.match(yaml,/MIT License/);
+ assert.doesNotMatch(yaml,/pull_request:/);
+});
