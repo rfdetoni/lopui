@@ -79,3 +79,6 @@ A biblioteca não está publicada em npm/GitHub Packages nesta etapa.
 ## Compatibilidade e releases
 
 O comando npm run compat compila o consumo dos 14 componentes em Angular 21 e 22, a partir de tarballs locais. Para publicação manual ou por tag (GitHub Packages e npmjs), consulte docs/RELEASE.md. A licença MIT permanece nos três pacotes.
+
+A publicação GitHub Packages pode ser disparada via PR de versão alterando
+`RELEASE`, sem disponibilizar tokens em arquivos. Consulte [docs/RELEASE.md](docs/RELEASE.md).
