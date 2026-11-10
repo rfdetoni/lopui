@@ -68,3 +68,10 @@ via rede. Antes de embutir e distribuir essa biblioteca em sistemas
 proprietários, avalie com responsável jurídico se AGPL é compatível com
 a estratégia de distribuição do ecossistema. A licença do Astryx é MIT,
 mas nenhum código original dele foi copiado.
+
+### Distribuição e licenças
+
+Cada pacote inclui sua própria cópia da licença AGPL-3.0.
+`npm run build` produz `dist/angular` com a biblioteca APF;
+`npm pack --dry-run` verifica o conteúdo antes de qualquer publicação.
+A biblioteca não está publicada em npm/GitHub Packages nesta etapa.

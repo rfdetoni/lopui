@@ -31,4 +31,9 @@ jobs:
       - name: Package Angular library (partial compilation)
         run: npm run build
       - name: Verify distributable
-        run: test -f dist/angular/package.json
+        run: |
+          test -f dist/angular/package.json
+          test -f dist/angular/LICENSE
+          (cd dist/angular && npm pack --dry-run --ignore-scripts >/dev/null)
+          (cd packages/tokens && npm pack --dry-run --ignore-scripts >/dev/null)
+          (cd packages/cli && npm pack --dry-run --ignore-scripts >/dev/null)

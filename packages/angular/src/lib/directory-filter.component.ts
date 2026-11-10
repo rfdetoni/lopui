@@ -15,6 +15,7 @@ export interface LopDirectoryQuery {
   readonly field:string;
   readonly query:string;
   readonly kind:string;
+  readonly operator:LopFilterOperator;
 }
 
 /** Typed filter controls. No client-side filtering or SQL construction. */
@@ -97,16 +98,22 @@ export class LopDirectoryFilterComponent {
   emitField(field:string):void{
     if(!this.fields.some(option=>option.id===field))return;
     this.fieldChange.emit(field);
-    this.filtersChange.emit({field,query:this.query,kind:this.kind});
+    this.filtersChange.emit({field,query:this.query,kind:this.kind,
+      operator:this.operatorFor(field)});
   }
   emitQuery(query:string):void{
     this.queryChange.emit(query);
-    this.filtersChange.emit({field:this.field,query,kind:this.kind});
+    this.filtersChange.emit({field:this.field,query,kind:this.kind,
+      operator:this.operatorFor(this.field)});
   }
   emitKind(kind:string):void{
     if(kind!==''&&!this.kinds.some(option=>option.value===kind))return;
     this.kindChange.emit(kind);
-    this.filtersChange.emit({field:this.field,query:this.query,kind});
+    this.filtersChange.emit({field:this.field,query:this.query,kind,
+      operator:this.operatorFor(this.field)});
+  }
+  private operatorFor(field:string):LopFilterOperator{
+    return this.fields.find(f=>f.id===field)?.operator??'contains';
   }
   activeLabel():string{return this.fields.find(f=>f.id===this.field)?.label??'Busca';}
   kindLabel():string{return this.kinds.find(x=>x.value===this.kind)?.label??'';}

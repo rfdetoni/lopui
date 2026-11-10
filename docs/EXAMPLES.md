@@ -31,3 +31,11 @@ A função `onFiltersChanged` chama o backend para filtrar a base completa,
 não apenas os registros que estão na página. O componente EntityPicker
 recebe `fetchPage(query,cursor,limit)`, `fetchById(id)`, `identify` e
 `display`, sem acesso a APIs, storage ou identidade.
+
+## Operador estruturado
+
+O evento `filtersChange` possui `{field,query,kind,operator}`.
+Somente os operadores `contains` e `equals` configurados em
+`LopFilterField` são emitidos. A API continua validando uma allowlist
+independente; nunca use o operador ou campo recebido para gerar
+SQL por concatenação.

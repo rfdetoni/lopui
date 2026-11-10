@@ -46,3 +46,15 @@ test('Angular library uses partial compilation and Angular 21 peer compatibility
  const pack=JSON.parse(read('packages/angular/ng-package.json'));
  assert.equal(pack.lib.entryFile,'src/public-api.ts');
 });
+
+test('every installable package carries the original AGPL license',()=>{
+ const license=read('LICENSE');
+ for(const name of ['angular','tokens','cli']){
+  assert.equal(read('packages/'+name+'/LICENSE'),license);
+ }
+});
+test('filters emit only declared operator variants',()=>{
+ const code=read('packages/angular/src/lib/directory-filter.component.ts');
+ assert.match(code,/operatorFor\(field:string\)/);
+ assert.match(code,/operator:LopFilterOperator/);
+});

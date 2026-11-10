@@ -56,7 +56,10 @@ export class LopCollapsibleCardComponent implements OnInit,OnChanges {
   @Input() actionHint='Abrir cadastro';
   @Input() expandWhenInvalid=false;
 
-  ngOnInit():void{this.collapsed.set(this.startCollapsed);}
+  ngOnInit():void{
+    this.collapsed.set(this.startCollapsed&&!this.expandWhenInvalid);
+    this.openFromHash();
+  }
   ngOnChanges(changes:SimpleChanges):void{
     if(changes['expandWhenInvalid']?.currentValue===true)this.collapsed.set(false);
   }
@@ -65,7 +68,9 @@ export class LopCollapsibleCardComponent implements OnInit,OnChanges {
   openFromHash():void {
     // A host may supply its own id to this element for an in-page anchor.
     if(typeof location==='undefined')return;
-    const hash=decodeURIComponent(location.hash.slice(1));
+    let hash='';
+    try{hash=decodeURIComponent(location.hash.slice(1));}
+    catch{return;}
     if(hash&&this.host.nativeElement.id===hash)this.collapsed.set(false);
   }
 }
