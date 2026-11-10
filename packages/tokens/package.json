@@ -1,0 +1,24 @@
+{
+  "name": "@rfdetoni/lopui-tokens",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "description": "Lop UI semantic design tokens without framework dependencies",
+  "files": [
+    "tokens.css",
+    "README.md"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfdetoni/lopui.git",
+    "directory": "packages/tokens"
+  }
+}

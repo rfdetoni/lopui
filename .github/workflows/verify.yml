@@ -1,0 +1,39 @@
+name: LopUI verification
+on:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'tsconfig.base.json'
+      - '.github/workflows/verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lopui-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.3'
+          cache: npm
+          cache-dependency-path: package.json
+      - name: Install pinned dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify CLI, manifest, and contracts
+        run: npm test
+      - name: Package Angular library (partial compilation)
+        run: npm run build
+      - name: Verify distributable
+        run: |
+          test -f dist/angular/package.json
+          test -f dist/angular/LICENSE
+          (cd dist/angular && npm pack --dry-run --ignore-scripts >/dev/null)
+          (cd packages/tokens && npm pack --dry-run --ignore-scripts >/dev/null)
+          (cd packages/cli && npm pack --dry-run --ignore-scripts >/dev/null)

@@ -1,0 +1,206 @@
+{
+  "name": "LopUI",
+  "version": "0.1.0",
+  "apiVersion": 1,
+  "license": "AGPL-3.0-only",
+  "repository": "https://github.com/rfdetoni/lopui",
+  "packages": {
+    "angular": "@rfdetoni/lopui-angular",
+    "tokens": "@rfdetoni/lopui-tokens",
+    "cli": "@rfdetoni/lopui-cli"
+  },
+  "framework": "Angular 21+22 (partial APF) + CSS custom properties",
+  "docs": {
+    "design": "docs/DESIGN-SYSTEM.md",
+    "integration": "docs/INTEGRATION.md",
+    "accessibility": "docs/ACCESSIBILITY.md"
+  },
+  "rules": {
+    "security": "RBAC, tenancy and JWT only on host/server",
+    "paging": "Server side",
+    "a11y": "Focus, keyboard, aria, reduced motion",
+    "license": "Check AGPL implications before proprietary consumption"
+  },
+  "components": [
+    {
+      "name": "Skeleton",
+      "selector": "lopui-skeleton",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/skeleton.component.ts",
+      "inputs": [
+        "variant",
+        "label"
+      ],
+      "states": [
+        "loading"
+      ]
+    },
+    {
+      "name": "DataTable",
+      "selector": "lopui-data-table",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/data-table.component.ts",
+      "inputs": [
+        "columns",
+        "rows",
+        "identify",
+        "interactive",
+        "loading"
+      ],
+      "states": [
+        "loading",
+        "empty",
+        "row-action"
+      ]
+    },
+    {
+      "name": "ServerPager",
+      "selector": "lopui-server-pager",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/server-pager.component.ts",
+      "inputs": [
+        "page",
+        "hasMore",
+        "busy"
+      ],
+      "states": [
+        "paged",
+        "disabled"
+      ]
+    },
+    {
+      "name": "DirectoryFilter",
+      "selector": "lopui-directory-filter",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/directory-filter.component.ts",
+      "inputs": [
+        "fields",
+        "kinds",
+        "query",
+        "field"
+      ],
+      "states": [
+        "filter",
+        "clear",
+        "chips"
+      ]
+    },
+    {
+      "name": "State",
+      "selector": "lopui-state",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/state.component.ts",
+      "inputs": [
+        "state",
+        "title",
+        "message",
+        "retryLabel"
+      ],
+      "states": [
+        "empty",
+        "error",
+        "forbidden",
+        "success"
+      ]
+    },
+    {
+      "name": "Toast",
+      "selector": "lopui-toast",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/toast.component.ts",
+      "inputs": [
+        "tone",
+        "title",
+        "message"
+      ],
+      "states": [
+        "success",
+        "warning",
+        "error",
+        "info"
+      ]
+    },
+    {
+      "name": "CollapsibleCard",
+      "selector": "lopui-collapsible-card",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/collapsible-card.component.ts",
+      "inputs": [
+        "title",
+        "startCollapsed",
+        "action"
+      ],
+      "states": [
+        "expanded",
+        "collapsed",
+        "preserved-content"
+      ]
+    },
+    {
+      "name": "AreaSidenav",
+      "selector": "lopui-area-sidenav",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/area-sidenav.component.ts",
+      "inputs": [
+        "items",
+        "title"
+      ],
+      "states": [
+        "anchors",
+        "keyboard"
+      ]
+    },
+    {
+      "name": "CommandPalette",
+      "selector": "lopui-command-palette",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/command-palette.component.ts",
+      "inputs": [
+        "open",
+        "commands",
+        "shortcutEnabled"
+      ],
+      "states": [
+        "search",
+        "focus",
+        "keyboard"
+      ]
+    },
+    {
+      "name": "EntityPicker",
+      "selector": "lopui-entity-picker",
+      "package": "@rfdetoni/lopui-angular",
+      "source": "packages/angular/src/lib/entity-picker.component.ts",
+      "inputs": [
+        "fetchPage",
+        "fetchById",
+        "identify",
+        "display"
+      ],
+      "states": [
+        "loading",
+        "error",
+        "empty",
+        "selection"
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "name": "list",
+      "file": "list.md"
+    },
+    {
+      "name": "form",
+      "file": "form.md"
+    },
+    {
+      "name": "mfe",
+      "file": "mfe.md"
+    },
+    {
+      "name": "search",
+      "file": "search.md"
+    }
+  ]
+}
