@@ -10,3 +10,7 @@
 
 - Primitivas visuais de chat, cartões Kanban, campos de formulário e
   badges de estado (sem mover lógica de streaming ou CRM).
+
+## 0.1.1 (licenciamento e distribuição)
+- Migra AGPL-3.0-only para licença permissiva MIT, inclusive nos pacotes distribuídos.
+- Atualiza documentação/manifesto de licença e testes.

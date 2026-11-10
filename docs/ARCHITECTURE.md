@@ -29,3 +29,7 @@ apenas compartilhar tokens.
 - Páginas e filtros sempre executados no backend.
 - Virtualização apenas com necessidade e medida; não faz parte da
   tabela de 25 registros do ERP.
+
+### Licença
+
+Todos os pacotes LopUI usam MIT; podem ser incorporados em produtos comerciais e proprietários, preservando a atribuição e o aviso de copyright. Não há obrigação de abrir o código dos consumidores.

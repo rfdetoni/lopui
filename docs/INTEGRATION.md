@@ -1,6 +1,6 @@
 # Integração nos hosts
 
-1. Publicar artefatos versionados após testes e revisão da licença.
+1. Publicar artefatos versionados após testes e confirmação do aviso MIT nos pacotes.
 2. Adicionar dependências via registry com lockfile; não importar
    `../../lopflow-web/src/app/...` entre repositórios.
 3. Referenciar tokens no CSS global e aplicar overrides locais.
